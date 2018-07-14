@@ -1,0 +1,10 @@
+*.pyc
+*.npy
+*.csv
+*.hdf5
+*.h5
+*.nii
+data/
+data/raw_data
+data/np_data
+evaluation/
