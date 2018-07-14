@@ -22,7 +22,8 @@ from run_test import get_eval_metrics
 @click.option('--output_test_eval', type=click.STRING, default='', help='path to save results on test case evaluated per epoch of training')
 def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretrained_model='',
          test_imgs_np_file='', test_masks_np_file='', output_test_eval=''):
-    assert (test_imgs_np_file != '' and test_masks_np_file != ''), \
+    assert (test_imgs_np_file != '' and test_masks_np_file != '') or \
+           (test_imgs_np_file == '' and test_masks_np_file == ''), \
             'Both test image file and test mask file must be given'
 
     eval_per_epoch = (test_imgs_np_file != '' and test_masks_np_file != '')
