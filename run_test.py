@@ -2,33 +2,56 @@ from __future__ import print_function
 from __future__ import division
 
 import click
+import json
+import os
 import numpy as np
 import SimpleITK as sitk
+from keras.optimizers import Adam
 
 from evaluation import getDSC, getHausdorff, getVS
+from models.UNet import get_model
+from metrics import dice_coef, dice_coef_loss
 
 
-def get_eval_metrics(true_mask, pred_mask):
+def get_eval_metrics(true_mask, pred_mask, output_file):
     true_mask_sitk = sitk.GetImageFromArray(true_mask)
     pred_mask_sitk = sitk.GetImageFromArray(pred_mask)
     dsc = getDSC(true_mask_sitk, pred_mask_sitk)
     h95 = getHausdorff(true_mask_sitk, pred_mask_sitk)
     vs = getVS(true_mask_sitk, pred_mask_sitk)
 
-    result = (dsc, h95, vs)
+    result = {}
+    result['dsc'] = dsc
+    result['h95'] = h95
+    result['vs'] = vs
 
-    return result
+    if output_file != '':
+        with open(output_file, 'w+') as outfile:
+            json.dump(result, outfile)
+
+    return (dsc, h95, vs)
 
 
 @click.command()
-@click.argument('true_mask_file', type=click.STRING)
-@click.argument('pred_mask_file', type=click.STRING)
-def main(true_mask_file, pred_mask_file):
-    test_masks = np.load(true_mask_file)
-    pred_masks = np.load(pred_mask_file)
-    pred_masks = pred_masks.argmax(axis=3)
+@click.argument('test_imgs_np_file', type=click.STRING)
+@click.argument('test_masks_np_file', type=click.STRING)
+@click.argument('pretrained_model', type=click.STRING)
+@click.option('--output_file', type=click.STRING, default='')
+def main(test_imgs_np_file, test_masks_np_file, pretrained_model, output_file=''):
+    test_imgs = np.load(test_imgs_np_file)
+
+    test_masks = np.load(test_masks_np_file)
     test_masks = test_masks[:, :, :, 0]
-    dsc, h95, vs = get_eval_metrics(test_masks, pred_masks)
+
+    img_shape = (test_imgs.shape[1], test_imgs.shape[2], 1)
+    model = get_model(img_shape=img_shape, num_classes=10)
+    assert os.path.isfile(pretrained_model)
+    model.load_weights(pretrained_model)
+    model.compile(optimizer=Adam(lr=(1e-5)), loss=dice_coef_loss, metrics=[dice_coef])
+    pred_masks = model.predict(test_imgs)
+    pred_masks = pred_masks.argmax(axis=3)
+    dsc, h95, vs = get_eval_metrics(test_masks, pred_masks, output_file)
+
     return (dsc, h95, vs)
 
 

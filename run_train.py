@@ -42,7 +42,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     if pretrained_model != '':
         assert os.path.isfile(pretrained_model)
         model.load_weights(pretrained_model)
-    model.compile(optimizer=Adam(lr=(2e-4)), loss=dice_coef_loss, metrics=[dice_coef])
+    model.compile(optimizer=Adam(lr=(1e-5)), loss=dice_coef_loss, metrics=[dice_coef])
 
     current_epoch = 1
     history = {}
