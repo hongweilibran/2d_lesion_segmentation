@@ -13,7 +13,7 @@ from models.UNet import get_model
 from metrics import dice_coef, dice_coef_loss
 
 
-def get_eval_metrics(true_mask, pred_mask, output_file):
+def get_eval_metrics(true_mask, pred_mask, output_file=''):
     true_mask_sitk = sitk.GetImageFromArray(true_mask)
     pred_mask_sitk = sitk.GetImageFromArray(pred_mask)
     dsc = getDSC(true_mask_sitk, pred_mask_sitk)
