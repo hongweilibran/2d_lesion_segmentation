@@ -20,8 +20,8 @@ labels = {1: 'Cortical gray matter',
           7: 'Cerebellum',
           8: 'Brain stem',
           # The two labels below are ignored:
-          # 9: 'Infarction',
-          # 10: 'Other',
+          9: 'Infarction',
+          10: 'Other',
           }
 
 
