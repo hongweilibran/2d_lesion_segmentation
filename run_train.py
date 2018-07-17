@@ -35,7 +35,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     train_masks = np.load(train_masks_np_file)
 
     img_shape = (train_imgs.shape[1], train_imgs.shape[2], 1)
-    total_epochs = 10
+    total_epochs = 2000
     batch_size = 16
 
     model = get_model(img_shape=img_shape, num_classes=10)
@@ -52,13 +52,18 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     while current_epoch <= total_epochs:
         print('Epoch', str(current_epoch), '/', str(total_epochs))
         model.fit(train_imgs, train_masks, batch_size=batch_size, epochs=1, verbose=True, shuffle=True)
-        if eval_per_epoch:
+        if eval_per_epoch and current_epoch % 100 == 0:
+            model.save_weights(output_weights_file)
             pred_masks = model.predict(test_imgs)
             pred_masks = pred_masks.argmax(axis=3)
             dsc, h95, vs = get_eval_metrics(test_masks[:, :, :, 0], pred_masks)
             history['dsc'].append(dsc)
             history['h95'].append(h95)
             history['vs'].append(vs)
+            if output_test_eval != '':
+                with open(output_test_eval, 'w+') as outfile:
+                    json.dump(history, outfile)
+
         current_epoch += 1
 
     model.save_weights(output_weights_file)
