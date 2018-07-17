@@ -32,8 +32,8 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     eval_per_epoch = (test_imgs_np_file != '' and test_masks_np_file != '')
     if eval_per_epoch:
         test_imgs = np.load(test_imgs_np_file)
-        # test_masks = np.load(test_masks_np_file)
-        test_masks = to_categorical(np.load(test_masks_np_file), num_classes)
+        test_masks = np.load(test_masks_np_file)
+        # test_masks = to_categorical(np.load(test_masks_np_file), num_classes)
 
     train_imgs = np.load(train_imgs_np_file)
     # train_masks = np.load(train_masks_np_file)
@@ -65,6 +65,9 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
             history['dsc'].append(dsc)
             history['h95'].append(h95)
             history['vs'].append(vs)
+            print(dsc)
+            print(h95)
+            print(vs)
             if output_test_eval != '':
                 with open(output_test_eval, 'w+') as outfile:
                     json.dump(history, outfile)
