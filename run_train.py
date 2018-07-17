@@ -6,6 +6,8 @@ import json
 import os
 import numpy as np
 from keras.optimizers import Adam
+from keras.utils import to_categorical
+from keras import losses
 
 from models.UNet import get_model
 from metrics import dice_coef, dice_coef_loss
@@ -26,13 +28,16 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
            (test_imgs_np_file == '' and test_masks_np_file == ''), \
             'Both test image file and test mask file must be given'
 
+    num_classes = 10
     eval_per_epoch = (test_imgs_np_file != '' and test_masks_np_file != '')
     if eval_per_epoch:
         test_imgs = np.load(test_imgs_np_file)
-        test_masks = np.load(test_masks_np_file)
+        # test_masks = np.load(test_masks_np_file)
+        test_masks = to_categorical(np.load(test_masks_np_file), num_classes)
 
     train_imgs = np.load(train_imgs_np_file)
-    train_masks = np.load(train_masks_np_file)
+    # train_masks = np.load(train_masks_np_file)
+    train_masks = to_categorical(np.load(train_masks_np_file), num_classes)
 
     img_shape = (train_imgs.shape[1], train_imgs.shape[2], 1)
     total_epochs = 2000
@@ -42,7 +47,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     if pretrained_model != '':
         assert os.path.isfile(pretrained_model)
         model.load_weights(pretrained_model)
-    model.compile(optimizer=Adam(lr=(1e-5)), loss=dice_coef_loss, metrics=[dice_coef])
+    model.compile(optimizer=Adam(lr=(1e-5)), loss='categorical_crossentropy')
 
     current_epoch = 1
     history = {}
