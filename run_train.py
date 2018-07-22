@@ -28,7 +28,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
            (test_imgs_np_file == '' and test_masks_np_file == ''), \
             'Both test image file and test mask file must be given'
 
-    num_classes = 8
+    num_classes = 9
     total_epochs = 2000
     batch_size = 16
     learn_rate = 1e-5
