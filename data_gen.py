@@ -48,6 +48,9 @@ def get_2d_patches(input_fold, test_img='', normilize_per_case=True, output_fold
         img = np.nan_to_num(img)
         mask = np.nan_to_num(mask)
 
+        mask[mask == 9] = 0
+        mask[mask == 10] = 0
+
         if normilize_per_case:
             mean = np.mean(img)
             std = np.std(img)
