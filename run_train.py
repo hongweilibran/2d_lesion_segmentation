@@ -9,7 +9,7 @@ from keras.optimizers import Adam
 from keras.utils import to_categorical
 from keras import losses
 
-from models.UNet import get_model
+from models.DRUNet import get_model
 from metrics import dice_coef, dice_coef_loss
 from run_test import get_eval_metrics
 
