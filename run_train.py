@@ -13,6 +13,8 @@ from models.UNet import get_model
 from metrics import dice_coef, dice_coef_loss
 from run_test import get_eval_metrics
 
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+
 
 @click.command()
 @click.argument('train_imgs_np_file', type=click.STRING)
