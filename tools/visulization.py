@@ -22,15 +22,17 @@ def visualize_test_evaluation(input_file, output_folder):
     h95_avg_list = [np.nanmean(np.array(item.values(), dtype='float32')) for item in h95_list]
     vs_avg_list = [np.nanmean(np.array(item.values(), dtype='float32')) for item in vs_list]
 
-    x_axis = list(range(len(dsc_avg_list)))
+    x_axis = list(range(0, len(dsc_avg_list)*10, 10))
 
-    plt.plot(x_axis, dsc_avg_list, 'r', x_axis, h95_avg_list, 'b', x_axis, vs_avg_list, 'g')
-    plt.title('Dice Coeffient and Volume similarity')
+    plt.plot(x_axis, dsc_avg_list, 'r', x_axis, vs_avg_list, 'g')
+    plt.title('Average Dice Coefficient and Volume similarity')
+    plt.legend(['Avg. Dice Coefficient', 'Avg. Volume Similarity'])
     plt.savefig(os.path.join(output_folder, 'dice_vs_graph.png'))
     plt.close()
 
     plt.plot(x_axis, h95_avg_list, 'b')
-    plt.title('Hausdorff distance')
+    plt.title('Average Hausdorff distance')
+    plt.legend(['Avg. Housdorff distance'])
     plt.savefig(os.path.join(output_folder, 'h95.png'))
     plt.close()
 
