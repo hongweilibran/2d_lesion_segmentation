@@ -6,3 +6,5 @@
 *.nii
 *.png
 *.json
+*.gz
+*.tar

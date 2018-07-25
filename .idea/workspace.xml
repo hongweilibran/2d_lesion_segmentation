@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e66a55bd-a754-4995-b972-073bea031af0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,14 +22,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_gen.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="data_gen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_gen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2304">
-              <caret line="96" column="93" selection-start-line="96" selection-start-column="93" selection-end-line="96" selection-end-column="93" />
+            <state relative-caret-position="264">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -83,13 +90,13 @@
       <list>
         <option value="$PROJECT_DIR$/models/UNet.py" />
         <option value="$PROJECT_DIR$/metrics.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/evaluation.py" />
         <option value="$PROJECT_DIR$/tools/visulization.py" />
         <option value="$PROJECT_DIR$/run_train.py" />
         <option value="$PROJECT_DIR$/models/DRUNet.py" />
         <option value="$PROJECT_DIR$/run_test.py" />
         <option value="$PROJECT_DIR$/data_gen.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -271,7 +278,7 @@
     <frame x="73" y="-4" width="1847" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13084112" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13084112" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" auto_hide="true" id="Event Log" internal_type="SLIDING" order="10" sideWeight="0.5002749" side_tool="true" type="SLIDING" weight="0.30481285" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32955715" />
@@ -553,13 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/keras/engine/training.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2225">
@@ -693,11 +693,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_gen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2304">
-          <caret line="96" column="93" selection-start-line="96" selection-start-column="93" selection-end-line="96" selection-end-column="93" />
+        <state relative-caret-position="264">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
         </state>
       </provider>
     </entry>
