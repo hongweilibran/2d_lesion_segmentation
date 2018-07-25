@@ -9,7 +9,7 @@ import SimpleITK as sitk
 from keras.optimizers import Adam
 
 from evaluation import getDSC, getHausdorff, getVS
-from models.UNet import get_model
+from models.DRUNet import get_model
 from metrics import dice_coef, dice_coef_loss
 
 
@@ -36,21 +36,28 @@ def get_eval_metrics(true_mask, pred_mask, output_file=''):
 @click.argument('test_imgs_np_file', type=click.STRING)
 @click.argument('test_masks_np_file', type=click.STRING)
 @click.argument('pretrained_model', type=click.STRING)
-@click.option('--output_file', type=click.STRING, default='')
-def main(test_imgs_np_file, test_masks_np_file, pretrained_model, output_file=''):
+@click.option('--output_pred_mask_file', type=click.STRING, default='')
+@click.option('--output_metric_file', type=click.STRING, default='')
+def main(test_imgs_np_file, test_masks_np_file, pretrained_model, output_pred_mask_file='', output_metric_file=''):
+    num_classes = 9
+    learn_rate = 1e-5
+
     test_imgs = np.load(test_imgs_np_file)
 
     test_masks = np.load(test_masks_np_file)
     test_masks = test_masks[:, :, :, 0]
 
     img_shape = (test_imgs.shape[1], test_imgs.shape[2], 1)
-    model = get_model(img_shape=img_shape, num_classes=10)
+    model = get_model(img_shape=img_shape, num_classes=num_classes)
     assert os.path.isfile(pretrained_model)
     model.load_weights(pretrained_model)
-    model.compile(optimizer=Adam(lr=(1e-5)), loss=dice_coef_loss, metrics=[dice_coef])
+    model.compile(optimizer=Adam(lr=(learn_rate)), loss='categorical_crossentropy')
     pred_masks = model.predict(test_imgs)
     pred_masks = pred_masks.argmax(axis=3)
-    dsc, h95, vs = get_eval_metrics(test_masks, pred_masks, output_file)
+    dsc, h95, vs = get_eval_metrics(test_masks, pred_masks, output_metric_file)
+
+    if output_pred_mask_file != '':
+        np.save(output_pred_mask_file, pred_masks)
 
     return (dsc, h95, vs)
 

@@ -6,12 +6,13 @@ import numpy as np
 import nibabel as nib
 
 
-def get_2d_patches(input_fold, test_img='', normilize_per_case=True, output_fold=''):
+def get_2d_patches(input_fold, test_img='', drop_class = [], normilize_per_case=True, output_fold=''):
     """
     Generating 2d patches based on 3d input images.
     Args:
         input_fold: string. Path to the folder with two other folders: images and masks.
                             In turn raw 3d images and masks are stored respectively.
+        drop_class: list of integers. List of classes that will be reasigned to background (class 0).
         normilize_per_case: boolean. True when each image per case (3d image) is normilized, False if not.
         test_imgs:  string. Name of the image which is selected for testing among all images.
         output_fold: string. Path to the output folder with numpy files of images and masks.
@@ -48,8 +49,8 @@ def get_2d_patches(input_fold, test_img='', normilize_per_case=True, output_fold
         img = np.nan_to_num(img)
         mask = np.nan_to_num(mask)
 
-        mask[mask == 9] = 0
-        mask[mask == 10] = 0
+        for elem in drop_class:
+            mask[mask == elem] = 0
 
         if normilize_per_case:
             mean = np.mean(img)
@@ -93,7 +94,7 @@ def get_2d_patches(input_fold, test_img='', normilize_per_case=True, output_fold
 @click.option('--normilize_per_case', default=True, type=click.BOOL )
 @click.option('--output_fold', default='', type=click.STRING, help='Path to the output folder where numpy arrays will be stored')
 def main(input_fold, test_img, normilize_per_case, output_fold):
-    get_2d_patches(input_fold=input_fold, normilize_per_case=normilize_per_case, test_img=test_img, output_fold=output_fold)
+    get_2d_patches(input_fold=input_fold, normilize_per_case=normilize_per_case, drop_class=[], test_img=test_img, output_fold=output_fold)
 
 
 if __name__ == '__main__':
