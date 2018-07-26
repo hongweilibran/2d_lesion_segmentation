@@ -53,7 +53,7 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
 
     for ind, img_file in enumerate(img_files):
         is_train_img = False
-        if img_file != test_img:
+        if img_file.split('_')[0] != test_img:
             is_train_img = True
 
         img = None
@@ -83,23 +83,16 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
 
         mask = nib.load(os.path.join(input_fold, 'masks/' + img_file.split('_')[0] + '_mask.nii')).get_data()
 
-        # img = np.nan_to_num(img)
         mask = np.nan_to_num(mask)
 
         for elem in drop_class:
             mask[mask == elem] = 0
 
-        # if normilize_per_case:
-        #     mean = np.mean(img)
-        #     std = np.std(img)
-        #     img -= mean
-        #     img /= std
-
         for layer in range(img.shape[2]):
             patch_img = img[:, :, layer]
             patch_mask = mask[:, :, layer]
             # patch_img = np.reshape(patch_img, (patch_img.shape[0], patch_img.shape[1], 1))
-            # patch_mask = np.reshape(patch_mask, (patch_mask.shape[0], patch_mask.shape[1], 1))
+            patch_mask = np.reshape(patch_mask, (patch_mask.shape[0], patch_mask.shape[1], 1))
             if is_train_img:
                 train_imgs.append(patch_img)
                 train_masks.append(patch_mask)
