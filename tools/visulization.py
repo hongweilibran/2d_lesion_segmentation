@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def visualize_test_evaluation(input_file, output_folder):
+def visualize_test_evaluation(input_file, output_folder, experiment_title = ''):
     assert os.path.isfile(input_file)
 
     with open(input_file) as infile:
@@ -25,14 +25,17 @@ def visualize_test_evaluation(input_file, output_folder):
     x_axis = list(range(0, len(dsc_avg_list)*10, 10))
 
     plt.plot(x_axis, dsc_avg_list, 'r', x_axis, vs_avg_list, 'g')
-    plt.title('Average Dice Coefficient and Volume similarity')
+    plt.title('Average Dice Coefficient and Volume similarity \n' + experiment_title)
     plt.legend(['Avg. Dice Coefficient', 'Avg. Volume Similarity'])
+    plt.text(540, 0.25, 'max. dice coefficient: ' + str(np.max(dsc_avg_list)), verticalalignment='center')
+    plt.text(540, 0.2, 'max. volume similarity: ' + str(np.max(vs_avg_list)))
     plt.savefig(os.path.join(output_folder, 'dice_vs_graph.png'))
     plt.close()
 
     plt.plot(x_axis, h95_avg_list, 'b')
-    plt.title('Average Hausdorff distance')
+    plt.title('Average Hausdorff distance \n' + experiment_title)
     plt.legend(['Avg. Housdorff distance'])
+    # plt.text(0.1, 0.6, 'min. Avg. Housdorff distance: ' + str(np.min(dsc_avg_list)))
     plt.savefig(os.path.join(output_folder, 'h95.png'))
     plt.close()
 
@@ -41,8 +44,9 @@ def visualize_test_evaluation(input_file, output_folder):
 @click.command()
 @click.argument('input_file', type=click.STRING)
 @click.argument('output_folder', type=click.STRING)
-def main(input_file, output_folder):
-    visualize_test_evaluation(input_file, output_folder)
+@click.option('--experiment_title', type=click.STRING, default='')
+def main(input_file, output_folder, experiment_title=''):
+    visualize_test_evaluation(input_file, output_folder, experiment_title=experiment_title)
     return 0
 
 if __name__ == '__main__':
