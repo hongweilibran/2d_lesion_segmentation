@@ -62,7 +62,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     while current_epoch <= total_epochs:
         print('Epoch', str(current_epoch), '/', str(total_epochs))
         model.fit(train_imgs, train_masks, batch_size=batch_size, epochs=1, verbose=True, shuffle=True)
-        if eval_per_epoch and current_epoch % 10 == 0:
+        if eval_per_epoch and current_epoch % 20 == 0:
             model.save_weights(output_weights_file)
             pred_masks = model.predict(test_imgs)
             pred_masks = pred_masks.argmax(axis=3)
