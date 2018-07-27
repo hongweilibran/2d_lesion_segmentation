@@ -51,7 +51,7 @@ def main(test_imgs_np_file, test_masks_np_file, pretrained_model, output_pred_ma
     model = get_model(img_shape=img_shape, num_classes=num_classes)
     assert os.path.isfile(pretrained_model)
     model.load_weights(pretrained_model)
-    model.compile(optimizer=Adam(lr=(learn_rate)), loss='categorical_crossentropy')
+    # model.compile(optimizer=Adam(lr=(learn_rate)), loss='categorical_crossentropy')
     pred_masks = model.predict(test_imgs)
     pred_masks = pred_masks.argmax(axis=3)
     dsc, h95, vs = get_eval_metrics(test_masks, pred_masks, output_metric_file)
