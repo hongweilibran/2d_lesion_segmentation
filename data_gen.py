@@ -121,10 +121,13 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
 @click.command()
 @click.argument('input_fold', type=click.STRING)
 @click.option('--test_img', default='', type=click.STRING, help='Name of test image among all images')
+@click.option('--flair', default=True, type=click.BOOL)
+@click.option('--t1', default=True, type=click.BOOL)
 @click.option('--normilize_per_case', default=True, type=click.BOOL )
 @click.option('--output_fold', default='', type=click.STRING, help='Path to the output folder where numpy arrays will be stored')
-def main(input_fold, test_img, normilize_per_case, output_fold):
-    get_2d_patches(input_fold=input_fold, normilize_per_case=normilize_per_case, drop_class=[9, 10], test_img=test_img, output_fold=output_fold)
+def main(input_fold, test_img, normilize_per_case, flair, t1, output_fold):
+    get_2d_patches(input_fold=input_fold, normilize_per_case=normilize_per_case, drop_class=[9, 10],
+                   flair=flair, t1=t1, test_img=test_img, output_fold=output_fold)
 
 
 if __name__ == '__main__':

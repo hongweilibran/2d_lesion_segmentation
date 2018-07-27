@@ -30,10 +30,13 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
            (test_imgs_np_file == '' and test_masks_np_file == ''), \
             'Both test image file and test mask file must be given'
 
+    flair = True
+    t1 = True
     num_classes = 9
     total_epochs = 1200
     batch_size = 16
     learn_rate = 1e-5
+    channels_num = flair + t1
 
     eval_per_epoch = (test_imgs_np_file != '' and test_masks_np_file != '')
     if eval_per_epoch:
@@ -43,7 +46,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     train_imgs = np.load(train_imgs_np_file)
     train_masks = to_categorical(np.load(train_masks_np_file), num_classes)
 
-    img_shape = (train_imgs.shape[1], train_imgs.shape[2], 1)
+    img_shape = (train_imgs.shape[1], train_imgs.shape[2], channels_num)
 
     model = get_model(img_shape=img_shape, num_classes=num_classes)
     if pretrained_model != '':
