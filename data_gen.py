@@ -112,8 +112,9 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
             os.mkdir(os.path.join(output_fold, 'test'))
         np.save(os.path.join(output_fold + 'train/', 'images'), train_imgs)
         np.save(os.path.join(output_fold + 'train/', 'masks'), train_masks)
-        np.save(os.path.join(output_fold + 'test/', 'images'), test_imgs)
-        np.save(os.path.join(output_fold + 'test/', 'masks'), test_masks)
+        if test_img != '':
+            np.save(os.path.join(output_fold + 'test/', 'images'), test_imgs)
+            np.save(os.path.join(output_fold + 'test/', 'masks'), test_masks)
 
     return (train_imgs, train_masks, test_imgs, test_masks)
 

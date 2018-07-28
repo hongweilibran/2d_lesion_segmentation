@@ -22,7 +22,7 @@ def visualize_test_evaluation(input_file, output_folder, experiment_title = ''):
     h95_avg_list = [np.nanmean(np.array(item.values(), dtype='float32')) for item in h95_list]
     vs_avg_list = [np.nanmean(np.array(item.values(), dtype='float32')) for item in vs_list]
 
-    x_axis = list(range(0, len(dsc_avg_list)*20, 20))
+    x_axis = list(range(0, len(dsc_avg_list)*10, 10))
 
     plt.plot(x_axis, dsc_avg_list, 'r', x_axis, vs_avg_list, 'g')
     plt.title('Average Dice Coefficient and Volume similarity \n' + experiment_title)

@@ -7,10 +7,8 @@ import os
 import numpy as np
 from keras.optimizers import Adam
 from keras.utils import to_categorical
-from keras import losses
 
-from models.DRUNet import get_model
-from metrics import dice_coef, dice_coef_loss
+from models.DRUNet32f import get_model
 from run_test import get_eval_metrics
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
@@ -31,7 +29,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
             'Both test image file and test mask file must be given'
 
     flair = True
-    t1 = True
+    t1 = False
     num_classes = 9
     total_epochs = 1200
     batch_size = 16
@@ -62,7 +60,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     while current_epoch <= total_epochs:
         print('Epoch', str(current_epoch), '/', str(total_epochs))
         model.fit(train_imgs, train_masks, batch_size=batch_size, epochs=1, verbose=True, shuffle=True)
-        if eval_per_epoch and current_epoch % 20 == 0:
+        if eval_per_epoch and current_epoch % 10 == 0:
             model.save_weights(output_weights_file)
             pred_masks = model.predict(test_imgs)
             pred_masks = pred_masks.argmax(axis=3)
