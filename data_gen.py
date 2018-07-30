@@ -98,9 +98,9 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
         elif flair and t1:
             img = np.concatenate((flair_img, t1_img), axis=3)
         elif flair and ir:
-            np.concatenate((flair_img, ir_img), axis=3)
+            img = np.concatenate((flair_img, ir_img), axis=3)
         elif t1 and ir:
-            np.concatenate((t1_img, ir_img), axis=3)
+            img = np.concatenate((t1_img, ir_img), axis=3)
 
         mask = nib.load(os.path.join(input_fold, 'masks/' + img_file.split('_')[0] + '_mask.nii')).get_data()
 
