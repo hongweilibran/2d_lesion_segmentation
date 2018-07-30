@@ -18,6 +18,10 @@ def visualize_test_evaluation(input_file, output_folder, experiment_title = ''):
     h95_list = eval_dict['h95']
     vs_list = eval_dict['vs']
 
+    # dsc_avg_list = [np.nanmean(np.array(item['4'], dtype='float32')) for item in dsc_list]
+    # h95_avg_list = [np.nanmean(np.array(item['4'], dtype='float32')) for item in h95_list]
+    # vs_avg_list = [np.nanmean(np.array(item['4'], dtype='float32')) for item in vs_list]
+
     dsc_avg_list = [np.nanmean(np.array(item.values(), dtype='float32')) for item in dsc_list]
     h95_avg_list = [np.nanmean(np.array(item.values(), dtype='float32')) for item in h95_list]
     vs_avg_list = [np.nanmean(np.array(item.values(), dtype='float32')) for item in vs_list]

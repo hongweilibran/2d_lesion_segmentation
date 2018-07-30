@@ -6,7 +6,7 @@ import numpy as np
 import nibabel as nib
 
 
-def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=True, normilize_per_case=True, output_fold=''):
+def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=True, ir=True, normilize_per_case=True, output_fold=''):
     """
     Generating 2d patches based on 3d input images.
     Args:
@@ -15,6 +15,7 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
         drop_class: list of integers. List of classes that will be reasigned to background (class 0).
         flair: boolean. True when flair images are used, False in opposite case.
         t1: boolean. True when t1 images are used, False in opposite case.
+        ir: boolean. Ture when t1 images are used, Flase in opposite case.
         normilize_per_case: boolean. True when each image per case (3d image) is normilized, False if not.
         test_imgs:  string. Name of the image which is selected for testing among all images.
         output_fold: string. Path to the output folder with numpy files of images and masks.
@@ -22,7 +23,7 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
     Returns:
         tuple with 4 numpy files. 1.train images, 2.train masks, 3.test images, 4.test masks.
     """
-    assert flair or t1
+    assert flair or t1 or ir
 
     assert os.path.isdir(input_fold)
     if output_fold != '':
@@ -37,14 +38,18 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
         flair_files = os.listdir(os.path.join(input_fold+"images/", 'FLAIR'))
     if t1:
         t1_img_files = os.listdir(os.path.join(input_fold + "images/", 'T1'))
+    if ir:
+        ir_img_files = os.listdir(os.path.join(input_fold + "images/", 'IR'))
 
-    if flair and t1:
-        assert len(flair_files) == len(t1_img_files)
-        img_files = flair_files
-    elif flair:
+    # if flair and t1:
+    #     assert len(flair_files) == len(t1_img_files)
+    #     img_files = flair_files
+    if flair:
         img_files = flair_files
     elif t1:
         img_files = t1_img_files
+    elif ir:
+        img_files = ir_img_files
 
     train_imgs = []
     train_masks = []
@@ -77,9 +82,25 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
                 t1_img /= std
             t1_img = t1_img[..., np.newaxis]
             img = t1_img
+        if ir:
+            ir_img = nib.load(os.path.join(input_fold, 'images/IR/' + img_file.split('_')[0] + '_IR.nii')).get_data()
+            ir_img = np.nan_to_num(ir_img)
+            if normilize_per_case:
+                mean = np.mean(t1_img)
+                std = np.std(t1_img)
+                ir_img -= mean
+                ir_img /= std
+            ir_img = ir_img[..., np.newaxis]
+            img = ir_img
 
-        if flair and t1:
+        if flair and t1 and ir:
+            img = np.concatenate((flair_img, t1_img, ir_img), axis=3)
+        elif flair and t1:
             img = np.concatenate((flair_img, t1_img), axis=3)
+        elif flair and ir:
+            np.concatenate((flair_img, ir_img), axis=3)
+        elif t1 and ir:
+            np.concatenate((t1_img, ir_img), axis=3)
 
         mask = nib.load(os.path.join(input_fold, 'masks/' + img_file.split('_')[0] + '_mask.nii')).get_data()
 
@@ -124,11 +145,12 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
 @click.option('--test_img', default='', type=click.STRING, help='Name of test image among all images')
 @click.option('--flair', default=True, type=click.BOOL)
 @click.option('--t1', default=True, type=click.BOOL)
+@click.option('--ir', default=True, type=click.BOOL)
 @click.option('--normilize_per_case', default=True, type=click.BOOL )
 @click.option('--output_fold', default='', type=click.STRING, help='Path to the output folder where numpy arrays will be stored')
-def main(input_fold, test_img, normilize_per_case, flair, t1, output_fold):
+def main(input_fold, test_img, normilize_per_case, flair, t1, ir, output_fold):
     get_2d_patches(input_fold=input_fold, normilize_per_case=normilize_per_case, drop_class=[9, 10],
-                   flair=flair, t1=t1, test_img=test_img, output_fold=output_fold)
+                   flair=flair, t1=t1, ir=ir, test_img=test_img, output_fold=output_fold)
 
 
 if __name__ == '__main__':
