@@ -37,11 +37,11 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
         'Both test image file and test mask file must be given'
 
     num_classes = 9
-    if not use_augmentation:
-        total_epochs = 1000
-    else:
+    if use_augmentation:
         total_epochs = 2000
-    batch_size = 16
+    else:
+        total_epochs = 1000
+    batch_size = 32
     learn_rate = 1e-4
 
     eval_per_epoch = (test_imgs_np_file != '' and test_masks_np_file != '')
@@ -54,9 +54,6 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     if use_class_weighting:
         class_weights = class_weight.compute_class_weight('balanced', np.unique(train_masks),
                                                           train_masks.flatten())
-        # class_weights = dict(enumerate(class_weights))
-        # sample_weights = class_weight.compute_sample_weight('balanced', train_masks.flatten())
-        # sample_weights = sample_weights.reshape(train_masks.shape)
 
     train_masks = to_categorical(train_masks, num_classes)
 
@@ -97,10 +94,6 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     history['vs'] = []
     while current_epoch <= total_epochs:
         print('Epoch', str(current_epoch), '/', str(total_epochs))
-        # if use_class_weighting:
-        #     model.fit(train_imgs, train_masks, batch_size=batch_size, epochs=1,
-        #               verbose=True, shuffle=True, sample_weight=sample_weights)
-        # else:
         model.fit(train_imgs, train_masks, batch_size=batch_size, epochs=1, verbose=True, shuffle=True)
         if eval_per_epoch and current_epoch % 10 == 0:
             model.save_weights(output_weights_file)
