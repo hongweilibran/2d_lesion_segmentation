@@ -31,8 +31,8 @@ def visualize_test_evaluation(input_file, output_folder, experiment_title = ''):
     plt.plot(x_axis, dsc_avg_list, 'r', x_axis, vs_avg_list, 'g')
     plt.title('Average Dice Coefficient and Volume similarity \n' + experiment_title)
     plt.legend(['Avg. Dice Coefficient', 'Avg. Volume Similarity'])
-    plt.text(0.4 * len(dsc_avg_list) * 10, 0.35, 'max. dice coefficient: ' + str(np.max(dsc_avg_list)))
-    plt.text(0.4 * len(dsc_avg_list) * 10, 0.3, 'max. volume similarity: ' + str(np.max(vs_avg_list)))
+    plt.text(0.4 * len(dsc_avg_list) * 10, 0.45, 'max. dice coefficient: ' + str(np.max(dsc_avg_list)))
+    plt.text(0.4 * len(dsc_avg_list) * 10, 0.4, 'max. volume similarity: ' + str(np.max(vs_avg_list)))
     plt.savefig(os.path.join(output_folder, 'dice_vs_graph.png'))
     plt.close()
 

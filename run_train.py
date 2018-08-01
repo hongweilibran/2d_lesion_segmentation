@@ -9,9 +9,10 @@ from sklearn.utils import class_weight
 from keras.optimizers import Adam
 from keras.utils import to_categorical
 
-from models.DRUNet32f import get_model
+from models.UNet import get_model
 from run_test import get_eval_metrics
 from tools.augmentation import augmentation
+from metrics import weighted_categorical_crossentropy
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
@@ -37,9 +38,9 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
 
     num_classes = 9
     if not use_augmentation:
-        total_epochs = 800
+        total_epochs = 1000
     else:
-        total_epochs = 400
+        total_epochs = 2000
     batch_size = 16
     learn_rate = 1e-4
 
@@ -50,12 +51,12 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
 
     train_imgs = np.load(train_imgs_np_file)
     train_masks = np.load(train_masks_np_file)
-    # if use_class_weighting:
-    #     class_weights = class_weight.compute_class_weight('balanced', np.unique(train_masks),
-    #                                                       train_masks.flatten())
-    #     class_weights = dict(enumerate(class_weights))
-    #     sample_weights = class_weight.compute_sample_weight('balanced', train_masks.flatten())
-    #     sample_weights = sample_weights.reshape(train_masks.shape)
+    if use_class_weighting:
+        class_weights = class_weight.compute_class_weight('balanced', np.unique(train_masks),
+                                                          train_masks.flatten())
+        # class_weights = dict(enumerate(class_weights))
+        # sample_weights = class_weight.compute_sample_weight('balanced', train_masks.flatten())
+        # sample_weights = sample_weights.reshape(train_masks.shape)
 
     train_masks = to_categorical(train_masks, num_classes)
 
@@ -66,7 +67,11 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     if pretrained_model != '':
         assert os.path.isfile(pretrained_model)
         model.load_weights(pretrained_model)
-    model.compile(optimizer=Adam(lr=(learn_rate)), loss='categorical_crossentropy')
+
+    if use_class_weighting:
+        model.compile(optimizer=Adam(lr=(learn_rate)), loss=weighted_categorical_crossentropy(class_weights))
+    else:
+        model.compile(optimizer=Adam(lr=(learn_rate)), loss='categorical_crossentropy')
 
     if use_augmentation:
         assert num_classes not in [1, 2]
