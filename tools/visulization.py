@@ -18,9 +18,9 @@ def visualize_test_evaluation(input_file, output_folder, experiment_title = ''):
     h95_list = eval_dict['h95']
     vs_list = eval_dict['vs']
 
-    # dsc_avg_list = [np.nanmean(np.array(item['4'], dtype='float32')) for item in dsc_list]
-    # h95_avg_list = [np.nanmean(np.array(item['4'], dtype='float32')) for item in h95_list]
-    # vs_avg_list = [np.nanmean(np.array(item['4'], dtype='float32')) for item in vs_list]
+    # dsc_avg_list = [np.nanmean(np.array(item['2'], dtype='float32')) for item in dsc_list]
+    # h95_avg_list = [np.nanmean(np.array(item['2'], dtype='float32')) for item in h95_list]
+    # vs_avg_list = [np.nanmean(np.array(item['2'], dtype='float32')) for item in vs_list]
 
     dsc_avg_list = [np.nanmean(np.array(item.values(), dtype='float32')) for item in dsc_list]
     h95_avg_list = [np.nanmean(np.array(item.values(), dtype='float32')) for item in h95_list]
@@ -31,8 +31,8 @@ def visualize_test_evaluation(input_file, output_folder, experiment_title = ''):
     plt.plot(x_axis, dsc_avg_list, 'r', x_axis, vs_avg_list, 'g')
     plt.title('Average Dice Coefficient and Volume similarity \n' + experiment_title)
     plt.legend(['Avg. Dice Coefficient', 'Avg. Volume Similarity'])
-    plt.text(0.4 * len(dsc_avg_list) * 10, 0.45, 'max. dice coefficient: ' + str(np.max(dsc_avg_list)))
-    plt.text(0.4 * len(dsc_avg_list) * 10, 0.4, 'max. volume similarity: ' + str(np.max(vs_avg_list)))
+    plt.text(0.4 * len(dsc_avg_list) * 10, 0.55, 'max. dice coefficient: ' + str(np.max(dsc_avg_list)))
+    plt.text(0.4 * len(dsc_avg_list) * 10, 0.5, 'max. volume similarity: ' + str(np.max(vs_avg_list)))
     plt.savefig(os.path.join(output_folder, 'dice_vs_graph.png'))
     plt.close()
 

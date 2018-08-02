@@ -4,7 +4,7 @@ from __future__ import division
 import numpy as np
 from keras.preprocessing.image import apply_transform, transform_matrix_offset_center
 
-def augmentation(x_0, x_1, y):
+def augmentation(x, y):
     theta = (np.random.uniform(-15, 15) * np.pi) / 180.
     rotation_matrix = np.array([[np.cos(theta), -np.sin(theta), 0],
                                 [np.sin(theta), np.cos(theta), 0],
@@ -18,11 +18,17 @@ def augmentation(x_0, x_1, y):
                             [0, zy, 0],
                             [0, 0, 1]])
     augmentation_matrix = np.dot(np.dot(rotation_matrix, shear_matrix), zoom_matrix)
-    transform_matrix = transform_matrix_offset_center(augmentation_matrix, x_0.shape[0], x_0.shape[1])
-    x_0 = apply_transform(x_0[..., np.newaxis], transform_matrix, channel_axis=2)
-    x_1 = apply_transform(x_1[..., np.newaxis], transform_matrix, channel_axis=2)
-    y = apply_transform(y[..., np.newaxis], transform_matrix, channel_axis=2)
-    return x_0[..., 0], x_1[..., 0], y[..., 0]
+
+    transform_matrix = transform_matrix_offset_center(augmentation_matrix, x[0].shape[0], x[0].shape[1])
+
+    x_aug = np.zeros(x.shape, dtype=np.float32)
+    for chan in range(x.shape[-1]):
+        x_aug[:, :, chan:chan+1] = apply_transform(x[:, :, chan, np.newaxis], transform_matrix, channel_axis=2)
+    # x_0 = apply_transform(x_0[..., np.newaxis], transform_matrix, channel_axis=2)
+    # x_1 = apply_transform(x_1[..., np.newaxis], transform_matrix, channel_axis=2)
+    y_aug = apply_transform(y, transform_matrix, channel_axis=2)
+
+    return x_aug, y_aug
 
 def main():
     return 0
