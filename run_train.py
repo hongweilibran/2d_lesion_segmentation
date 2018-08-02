@@ -74,7 +74,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
         train_imgs = np.concatenate((train_imgs, images_aug), axis=0)
         train_masks = np.concatenate((train_masks, masks_aug), axis=0)
 
-        train_masks = to_categorical(train_masks, num_classes)
+    train_masks = to_categorical(train_masks, num_classes)
 
     if use_weighted_crossentropy:
         model.compile(optimizer=Adam(lr=(learn_rate)), loss=weighted_categorical_crossentropy(class_weights))
