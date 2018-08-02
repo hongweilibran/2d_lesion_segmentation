@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e66a55bd-a754-4995-b972-073bea031af0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/augmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/augmentation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/visulization.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/visulization.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +16,8 @@
       <file leaf-file-name="run_train.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2016">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="264">
+              <caret line="32" column="64" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -31,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/tools/augmentation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
-              <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -63,8 +61,8 @@
       <file leaf-file-name="data_gen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_gen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+            <state relative-caret-position="-144">
+              <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -174,7 +172,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run_train">
+  <component name="RunManager" selected="Python.data_gen">
     <configuration name="data_gen" type="PythonConfigurationType" factoryName="Python" activateToolWindowBeforeRun="false" temporary="true">
       <module name="2d_lesion_segmentation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -188,7 +186,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_gen.py" />
-      <option name="PARAMETERS" value="data/raw_data --test_img 70 --flair True --t1 True --ir False --output_fold data/np_data/test_case_70" />
+      <option name="PARAMETERS" value="data/raw_data --test_img 148 --flair True --t1 True --ir False --output_fold data/np_data/test_case_148" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -255,9 +253,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.data_gen" />
         <item itemvalue="Python.run_train" />
         <item itemvalue="Python.visulization" />
-        <item itemvalue="Python.data_gen" />
         <item itemvalue="Python.run_test" />
       </list>
     </recent_temporary>
@@ -644,16 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_gen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/metrics.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
@@ -695,17 +683,27 @@
     <entry file="file://$PROJECT_DIR$/tools/augmentation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data_gen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144">
+          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/run_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2016">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="264">
+          <caret line="32" column="64" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

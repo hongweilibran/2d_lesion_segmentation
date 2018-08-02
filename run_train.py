@@ -22,15 +22,15 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 @click.argument('train_masks_np_file', type=click.STRING)
 @click.argument('output_weights_file', type=click.STRING)
 @click.option('--pretrained_model', type=click.STRING, default='', help='path to the pretrained model')
-@click.option('--use_augmentation', type=click.STRING, default='', help='use data augmentation or not')
-@click.option('--use_weighted_crossentropy', type=click.BOOL, default=True,
+@click.option('--use_augmentation', type=click.BOOL, default=False, help='use data augmentation or not')
+@click.option('--use_weighted_crossentropy', type=click.BOOL, default=False,
               help='use weighting of classes according to inbalance or not')
 @click.option('--test_imgs_np_file', type=click.STRING, default='', help='path to the numpy file of test image')
 @click.option('--test_masks_np_file', type=click.STRING, default='', help='path to the numpy file of the test image')
 @click.option('--output_test_eval', type=click.STRING, default='',
               help='path to save results on test case evaluated per epoch of training')
 def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretrained_model='',
-         use_augmentation=False, use_weighted_crossentropy=True,
+         use_augmentation=False, use_weighted_crossentropy=False,
          test_imgs_np_file='', test_masks_np_file='', output_test_eval=''):
     assert (test_imgs_np_file != '' and test_masks_np_file != '') or \
            (test_imgs_np_file == '' and test_masks_np_file == ''), \
