@@ -66,7 +66,6 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
         model.load_weights(pretrained_model)
 
     if use_augmentation:
-        assert num_classes not in [1, 2]
         samples_num = train_imgs.shape[0]
         images_aug = np.zeros(train_imgs.shape, dtype=np.float32)
         masks_aug = np.zeros(train_masks.shape, dtype=np.float32)

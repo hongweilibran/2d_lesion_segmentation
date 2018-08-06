@@ -86,8 +86,8 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
             ir_img = nib.load(os.path.join(input_fold, 'images/IR/' + img_file.split('_')[0] + '_IR.nii')).get_data()
             ir_img = np.nan_to_num(ir_img)
             if normilize_per_case:
-                mean = np.mean(t1_img)
-                std = np.std(t1_img)
+                mean = np.mean(ir_img)
+                std = np.std(ir_img)
                 ir_img -= mean
                 ir_img /= std
             ir_img = ir_img[..., np.newaxis]
@@ -108,6 +108,7 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
 
         for elem in drop_class:
             mask[mask == elem] = 0
+        # mask[mask==5] = 1
 
         for layer in range(img.shape[2]):
             patch_img = img[:, :, layer]

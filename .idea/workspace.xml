@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e66a55bd-a754-4995-b972-073bea031af0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/visulization.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/visulization.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run_train.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run_train.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1032">
-              <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
+            <state relative-caret-position="471">
+              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -30,7 +29,7 @@
       <file leaf-file-name="augmentation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/augmentation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
+            <state relative-caret-position="312">
               <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
@@ -42,7 +41,7 @@
       <file leaf-file-name="metrics.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/metrics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
+            <state relative-caret-position="816">
               <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -54,17 +53,17 @@
       <file leaf-file-name="visulization.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/visulization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
+            <state relative-caret-position="-363">
               <caret line="24" selection-start-line="24" selection-end-line="26" selection-end-column="92" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_gen.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="data_gen.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_gen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1176">
-              <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+            <state relative-caret-position="3648">
+              <caret line="152" column="93" selection-start-line="152" selection-start-column="93" selection-end-line="152" selection-end-column="93" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -118,11 +117,11 @@
         <option value="$PROJECT_DIR$/tools/raw_data_folder_gen.py" />
         <option value="$PROJECT_DIR$/run_test.py" />
         <option value="$PROJECT_DIR$/models/DRUNet32f.py" />
-        <option value="$PROJECT_DIR$/data_gen.py" />
         <option value="$PROJECT_DIR$/metrics.py" />
         <option value="$PROJECT_DIR$/tools/augmentation.py" />
         <option value="$PROJECT_DIR$/tools/visulization.py" />
         <option value="$PROJECT_DIR$/run_train.py" />
+        <option value="$PROJECT_DIR$/data_gen.py" />
       </list>
     </option>
   </component>
@@ -174,7 +173,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.visulization">
+  <component name="RunManager" selected="Python.run_train">
     <configuration name="data_gen" type="PythonConfigurationType" factoryName="Python" activateToolWindowBeforeRun="false" temporary="true">
       <module name="2d_lesion_segmentation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -188,7 +187,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_gen.py" />
-      <option name="PARAMETERS" value="data/raw_data --test_img 70 --flair True --t1 True --ir False --output_fold data/np_data/test_case_70" />
+      <option name="PARAMETERS" value="data/raw_data --test_img 148 --flair True --t1 True --ir True --output_fold data/np_data/test_case_148" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -224,7 +223,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_train.py" />
-      <option name="PARAMETERS" value="data/np_data/test_case_70/train/images.npy data/np_data/test_case_70/train/masks.npy /weights.h5 --use_augmentation True --use_weighted_crossentropy True --test_imgs_np_file data/np_data/test_case_70/test/images.npy --test_masks_np_file data/np_data/test_case_70/test/masks.npy --output_test_eval evaluation/drunet/test_case_70/eval.json" />
+      <option name="PARAMETERS" value="data/np_data/test_case_70/train/images.npy data/np_data/test_case_70/train/masks.npy /weights.h5 --use_augmentation True --use_weighted_crossentropy False --test_imgs_np_file data/np_data/test_case_70/test/images.npy --test_masks_np_file data/np_data/test_case_70/test/masks.npy --output_test_eval evaluation/drunet/test_case_70/eval.json" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -255,9 +254,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.visulization" />
-        <item itemvalue="Python.data_gen" />
         <item itemvalue="Python.run_train" />
+        <item itemvalue="Python.data_gen" />
+        <item itemvalue="Python.visulization" />
         <item itemvalue="Python.run_test" />
       </list>
     </recent_temporary>
@@ -286,7 +285,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="72" y="-11" width="1849" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17921935" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
@@ -312,10 +310,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/run_train.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="111" />
+      <option name="time" value="114" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -499,13 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/keras/utils/np_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
@@ -646,16 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/augmentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/matplotlib/backends/backend_agg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -663,19 +651,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_gen.py">
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/keras/utils/np_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1176">
-          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="192">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/metrics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
+        <state relative-caret-position="816">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -683,19 +668,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/visulization.py">
+    <entry file="file://$PROJECT_DIR$/tools/augmentation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="24" selection-start-line="24" selection-end-line="26" selection-end-column="92" />
+        <state relative-caret-position="312">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1032">
-          <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
+        <state relative-caret-position="471">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/visulization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-363">
+          <caret line="24" selection-start-line="24" selection-end-line="26" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_gen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3648">
+          <caret line="152" column="93" selection-start-line="152" selection-start-column="93" selection-end-line="152" selection-end-column="93" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
