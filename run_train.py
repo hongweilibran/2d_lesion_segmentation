@@ -38,10 +38,10 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
 
     num_classes = 9
     if not use_augmentation:
-        total_epochs = 800
+        total_epochs = 1000
     else:
-        total_epochs = 400
-    batch_size = 32
+        total_epochs = 500
+    batch_size = 25
     learn_rate = 2e-4
 
     eval_per_epoch = (test_imgs_np_file != '' and test_masks_np_file != '')
