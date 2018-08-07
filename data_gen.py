@@ -5,8 +5,23 @@ import click
 import numpy as np
 import nibabel as nib
 
+def prep_img(img, crop_shape=None, normilize=False):
+    if crop_shape != None:
+        assert len(crop_shape) == 2
+        img_width = img.shape[0]
+        img_height = img.shape[1]
+        width = (img_width - crop_shape[0]) // 2
+        height = (img_height - crop_shape[1]) // 2
+        img = img[width:img_width - width, height:img_height - height]
+    if normilize:
+        mean = np.mean(img)
+        std = np.std(img)
+        img -= mean
+        img /= std
+    return img
 
-def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=True, ir=True, normilize_per_case=True, output_fold=''):
+def get_2d_patches(input_fold, test_img='', drop_class = [], crop_shape=None,
+                   flair=False, t1=True, ir=True, normilize_per_case=True, output_fold=''):
     """
     Generating 2d patches based on 3d input images.
     Args:
@@ -65,31 +80,19 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
         if flair:
             flair_img = nib.load(os.path.join(input_fold, 'images/FLAIR/' + img_file.split('_')[0]+'_FLAIR.nii')).get_data()
             flair_img = np.nan_to_num(flair_img)
-            if normilize_per_case:
-                mean = np.mean(flair_img)
-                std = np.std(flair_img)
-                flair_img -= mean
-                flair_img /= std
+            flair_img = prep_img(flair_img, crop_shape=crop_shape, normilize=normilize_per_case)
             flair_img = flair_img[..., np.newaxis]
             img = flair_img
         if t1:
             t1_img = nib.load(os.path.join(input_fold, 'images/T1/' + img_file.split('_')[0]+'_T1.nii')).get_data()
             t1_img = np.nan_to_num(t1_img)
-            if normilize_per_case:
-                mean = np.mean(t1_img)
-                std = np.std(t1_img)
-                t1_img -= mean
-                t1_img /= std
+            t1_img = prep_img(t1_img, crop_shape=crop_shape, normilize=normilize_per_case)
             t1_img = t1_img[..., np.newaxis]
             img = t1_img
         if ir:
             ir_img = nib.load(os.path.join(input_fold, 'images/IR/' + img_file.split('_')[0] + '_IR.nii')).get_data()
             ir_img = np.nan_to_num(ir_img)
-            if normilize_per_case:
-                mean = np.mean(ir_img)
-                std = np.std(ir_img)
-                ir_img -= mean
-                ir_img /= std
+            ir_img = prep_img(ir_img, crop_shape=crop_shape, normilize=normilize_per_case)
             ir_img = ir_img[..., np.newaxis]
             img = ir_img
 
@@ -103,8 +106,8 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
             img = np.concatenate((t1_img, ir_img), axis=3)
 
         mask = nib.load(os.path.join(input_fold, 'masks/' + img_file.split('_')[0] + '_mask.nii')).get_data()
-
         mask = np.nan_to_num(mask)
+        mask = prep_img(mask, crop_shape=crop_shape, normilize=False)
 
         for elem in drop_class:
             mask[mask == elem] = 0
@@ -151,7 +154,7 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], flair=False, t1=Tru
 @click.option('--output_fold', default='', type=click.STRING, help='Path to the output folder where numpy arrays will be stored')
 def main(input_fold, test_img, normilize_per_case, flair, t1, ir, output_fold):
     get_2d_patches(input_fold=input_fold, normilize_per_case=normilize_per_case, drop_class=[9, 10],
-                   flair=flair, t1=t1, ir=ir, test_img=test_img, output_fold=output_fold)
+                   crop_shape=(200, 200),flair=flair, t1=t1, ir=ir, test_img=test_img, output_fold=output_fold)
 
 
 if __name__ == '__main__':

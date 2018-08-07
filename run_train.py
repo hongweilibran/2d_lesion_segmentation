@@ -41,7 +41,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
         total_epochs = 1000
     else:
         total_epochs = 500
-    batch_size = 25
+    batch_size = 32
     learn_rate = 2e-4
 
     eval_per_epoch = (test_imgs_np_file != '' and test_masks_np_file != '')
@@ -53,9 +53,9 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     train_masks = np.load(train_masks_np_file)
 
     if use_weighted_crossentropy:
-        # class_weights = class_weight.compute_class_weight('balanced', np.unique(train_masks),
-        #                                                   train_masks.flatten())
-        class_weights = np.array([1, 1, 2, 1, 2, 1, 1, 1, 1])
+        class_weights = class_weight.compute_class_weight('balanced', np.unique(train_masks),
+                                                          train_masks.flatten())
+        # class_weights = np.array([1, 1, 2, 1, 2, 1, 1, 1, 1])
 
     channels_num = train_imgs.shape[-1]
     img_shape = (train_imgs.shape[1], train_imgs.shape[2], channels_num)
