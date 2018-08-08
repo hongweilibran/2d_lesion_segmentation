@@ -9,7 +9,7 @@ from sklearn.utils import class_weight
 from keras.optimizers import Adam
 from keras.utils import to_categorical
 
-from models.DRUNet32f import get_model
+from models.UNet import get_model
 from run_test import get_eval_metrics
 from tools.augmentation import augmentation
 from metrics import weighted_categorical_crossentropy
