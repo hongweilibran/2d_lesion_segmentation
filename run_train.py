@@ -75,7 +75,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
         train_imgs = np.concatenate((train_imgs, images_aug), axis=0)
         train_masks = np.concatenate((train_masks, masks_aug), axis=0)
 
-    train_masks = to_categorical(train_masks, num_classes)
+    train_masks_cat = to_categorical(train_masks, num_classes)
 
     if use_weighted_crossentropy:
         model.compile(optimizer=Adam(lr=(learn_rate)), loss=weighted_categorical_crossentropy(class_weights))
@@ -89,7 +89,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     history['vs'] = []
     while current_epoch <= total_epochs:
         print('Epoch', str(current_epoch), '/', str(total_epochs))
-        model.fit(train_imgs, train_masks, batch_size=batch_size, epochs=1, verbose=True, shuffle=True)
+        model.fit(train_imgs, train_masks_cat, batch_size=batch_size, epochs=1, verbose=True, shuffle=True)
         if eval_per_epoch and current_epoch % 10 == 0:
             model.save_weights(output_weights_file)
             pred_masks = model.predict(test_imgs)
@@ -108,6 +108,12 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
         current_epoch += 1
 
     model.save_weights(output_weights_file)
+    pred_masks = model.predict(train_imgs)
+    pred_masks = pred_masks.argmax(axis=3)
+    dsc, h95, vs = get_eval_metrics(train_masks[:, :, :, 0], pred_masks)
+    print(dsc)
+    print(h95)
+    print(vs)
 
     if output_test_eval != '':
         with open(output_test_eval, 'w+') as outfile:

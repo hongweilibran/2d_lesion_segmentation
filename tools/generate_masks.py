@@ -59,7 +59,6 @@ def gen_masks(model, input_img_fold, flair = False, t1 = False, normilize=True, 
         pred_mask = pred_mask.argmax(axis=3)
 
         pred_mask = pred_mask.astype('float32')
-        # pred_mask = pred_mask.transpose((0, 2, 1))
 
         masks.append(pred_mask)
 
