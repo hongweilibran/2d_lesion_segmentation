@@ -40,7 +40,7 @@ def get_eval_metrics(true_mask, pred_mask, output_file=''):
 @click.option('--output_metric_file', type=click.STRING, default='')
 def main(test_imgs_np_file, test_masks_np_file, pretrained_model, output_pred_mask_file='', output_metric_file=''):
     num_classes = 9
-    learn_rate = 1e-5
+    # learn_rate = 1e-5
 
     test_imgs = np.load(test_imgs_np_file)
 
