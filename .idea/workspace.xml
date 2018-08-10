@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e66a55bd-a754-4995-b972-073bea031af0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/models/DRUNet32fLD.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DRUNet40f.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/generate_masks.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/generate_masks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/test_fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/test_fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/visulization.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/visulization.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run_train.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="run_train.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1741">
-              <caret line="91" column="45" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
+            <state relative-caret-position="-1268">
+              <caret line="56" column="80" selection-start-line="56" selection-start-column="80" selection-end-line="56" selection-end-column="80" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -34,8 +31,8 @@
       <file leaf-file-name="visulization.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/visulization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+            <state relative-caret-position="192">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -46,68 +43,8 @@
       <file leaf-file-name="data_gen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_gen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1547">
-              <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="generate_masks.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/generate_masks.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="60" column="47" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_fusion.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/test_fusion.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-191">
-              <caret line="37" column="68" selection-start-line="37" selection-start-column="68" selection-end-line="37" selection-end-column="68" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DRUNet32fLD.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/DRUNet32fLD.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-215">
-              <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DRUNet32f.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/DRUNet32f.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="56" column="47" selection-end-line="58" selection-end-column="16" />
+            <state relative-caret-position="220">
+              <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -144,7 +81,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/tools/raw_data_folder_gen.py" />
         <option value="$PROJECT_DIR$/metrics.py" />
-        <option value="$PROJECT_DIR$/tools/visulization.py" />
         <option value="$PROJECT_DIR$/tools/augmentation.py" />
         <option value="$PROJECT_DIR$/tools/load_weights.py" />
         <option value="$PROJECT_DIR$/run_test.py" />
@@ -152,11 +88,12 @@
         <option value="$PROJECT_DIR$/models/crfrnn_layer.py" />
         <option value="$PROJECT_DIR$/models/DRUNet32f.py" />
         <option value="$PROJECT_DIR$/models/DRUNet40f.py" />
-        <option value="$PROJECT_DIR$/data_gen.py" />
-        <option value="$PROJECT_DIR$/run_train.py" />
         <option value="$PROJECT_DIR$/tools/generate_masks.py" />
-        <option value="$PROJECT_DIR$/tools/test_fusion.py" />
         <option value="$PROJECT_DIR$/models/DRUNet32fLD.py" />
+        <option value="$PROJECT_DIR$/tools/test_fusion.py" />
+        <option value="$PROJECT_DIR$/tools/visulization.py" />
+        <option value="$PROJECT_DIR$/run_train.py" />
+        <option value="$PROJECT_DIR$/data_gen.py" />
       </list>
     </option>
   </component>
@@ -213,7 +150,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_fusion">
+  <component name="RunManager" selected="Python.data_gen">
     <configuration name="data_gen" type="PythonConfigurationType" factoryName="Python" activateToolWindowBeforeRun="false" temporary="true">
       <module name="2d_lesion_segmentation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -227,7 +164,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_gen.py" />
-      <option name="PARAMETERS" value="data/raw_data --flair True --t1 True --ir False --output_fold data/np_data/final" />
+      <option name="PARAMETERS" value="data/raw_data --flair True --t1 True --ir False --output_fold data/np_data/t1_flair_final" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -299,7 +236,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/visulization.py" />
-      <option name="PARAMETERS" value="evaluation/new_exp/test_case_148/8c_t1_flair_aug_dru40/eval.json evaluation/new_exp/test_case_148/8c_t1_flair_aug_dru40 --experiment_title &quot;DRUNet40f, lr=2e-4. 10c. T1+FLAIR. Aug. TC 148&quot;" />
+      <option name="PARAMETERS" value="evaluation/new_exp/test_case_70/8c_t1_flair_aug_dru32ld/eval.json evaluation/new_exp/test_case_70/8c_t1_flair_aug_dru32ld --experiment_title &quot;DRUNet32fLD, lr=2e-4. 10c. T1+FLAIR. Aug. TC 70&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -313,10 +250,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test_fusion" />
-        <item itemvalue="Python.run_train" />
         <item itemvalue="Python.data_gen" />
         <item itemvalue="Python.visulization" />
+        <item itemvalue="Python.test_fusion" />
+        <item itemvalue="Python.run_train" />
         <item itemvalue="Python.generate_masks" />
       </list>
     </recent_temporary>
@@ -347,7 +284,7 @@
     <frame x="73" y="-4" width="1847" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17921935" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17921935" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" auto_hide="true" id="Event Log" internal_type="SLIDING" order="10" sideWeight="0.5002749" side_tool="true" type="SLIDING" weight="0.30481285" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32941177" />
@@ -356,7 +293,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32941177" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49972513" visible="true" weight="0.45882353" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49972513" visible="true" weight="0.38930482" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -371,17 +308,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tools/test_fusion.py</url>
-          <line>90</line>
-          <option name="timeStamp" value="163" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="164" />
+      <option name="time" value="165" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -438,13 +368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="242" selection-start-line="242" selection-end-line="242" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="376" column="9" lean-forward="true" selection-start-line="376" selection-start-column="9" selection-end-line="376" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -619,13 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/augmentation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-63">
@@ -680,40 +596,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/visulization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/DRUNet40f.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="489">
           <caret line="57" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1741">
-          <caret line="91" column="45" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_gen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1547">
-          <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -727,32 +613,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/generate_masks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="60" column="47" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
           <caret line="61" selection-start-line="61" selection-end-line="61" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/test_fusion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-191">
-          <caret line="37" column="68" selection-start-line="37" selection-start-column="68" selection-end-line="37" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -767,12 +633,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/DRUNet32fLD.py">
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-215">
-          <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+        <state relative-caret-position="53">
+          <caret line="360" selection-start-line="360" selection-end-line="360" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1556">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/test_fusion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="64" column="59" selection-start-line="64" selection-start-column="59" selection-end-line="64" selection-end-column="59" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/generate_masks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-20">
+          <caret line="62" column="31" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/DRUNet32fLD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="45" column="46" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/visulization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_gen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1268">
+          <caret line="56" column="80" selection-start-line="56" selection-start-column="80" selection-end-line="56" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

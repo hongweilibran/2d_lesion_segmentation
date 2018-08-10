@@ -2,7 +2,6 @@ from __future__ import division
 from __future__ import print_function
 
 import numpy as np
-import SimpleITK as sitk
 
 from run_test import get_eval_metrics
 from models.DRUNet32f import get_model
@@ -36,8 +35,6 @@ def main():
     print(vs)
 
     c4_pred_masks = np.load('evaluation/masks_label4/label_4_case_70.npy')
-    # c4_pred_masks[c4_pred_masks>0.5] = 1
-    # c4_pred_masks[c4_pred_masks <= 0.5] = 0
     c4_pred_masks = c4_pred_masks.transpose((0, 2, 1))
     fuse4_pred_masks = pred_masks.copy()
     fuse4_pred_masks[fuse4_pred_masks == 4] = 3
@@ -80,11 +77,11 @@ def main():
     fuse4_fuse5_dsc, fuse4_fuse5_h95, fuse4_fuse5_vs = get_eval_metrics(test_masks, fuse4_fuse5_pred_masks)
 
     print("Evaluation after fusing 5th label. DRUNet32f\n")
-    print('Fuse5 DSC:')
+    print('Fuse4 Fuse5 DSC:')
     print(fuse4_fuse5_dsc)
-    print("\nFuse5 H95:")
+    print("\nFuse4 Fuse5 H95:")
     print(fuse4_fuse5_h95)
-    print("\nFuse5 VS")
+    print("\nFuse4 Fuse5 VS")
     print(fuse4_fuse5_vs)
 
     return 0
