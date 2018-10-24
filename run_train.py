@@ -36,7 +36,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
            (test_imgs_np_file == '' and test_masks_np_file == ''), \
         'Both test image file and test mask file must be given'
 
-    num_classes = 9
+    num_classes = 11
     if not use_augmentation:
         total_epochs = 1000
     else:
@@ -89,7 +89,7 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
     while current_epoch <= total_epochs:
         print('Epoch', str(current_epoch), '/', str(total_epochs))
         model.fit(train_imgs, train_masks_cat, batch_size=batch_size, epochs=1, verbose=True, shuffle=True)
-        if eval_per_epoch and current_epoch % 10 == 0:
+        if eval_per_epoch and current_epoch % 100 == 0:
             model.save_weights(output_weights_file)
             pred_masks = model.predict(test_imgs)
             pred_masks = pred_masks.argmax(axis=3)
@@ -107,12 +107,12 @@ def main(train_imgs_np_file, train_masks_np_file, output_weights_file, pretraine
         current_epoch += 1
 
     model.save_weights(output_weights_file)
-    pred_masks = model.predict(train_imgs)
-    pred_masks = pred_masks.argmax(axis=3)
-    dsc, h95, vs = get_eval_metrics(train_masks[:, :, :, 0], pred_masks)
-    print(dsc)
-    print(h95)
-    print(vs)
+    # pred_masks = model.predict(train_imgs)
+    # pred_masks = pred_masks.argmax(axis=3)
+    # dsc, h95, vs = get_eval_metrics(train_masks[:, :, :, 0], pred_masks)
+    # print(dsc)
+    # print(h95)
+    # print(vs)
 
     if output_test_eval != '':
         with open(output_test_eval, 'w+') as outfile:

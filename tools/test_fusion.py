@@ -58,6 +58,7 @@ def main():
     c5_pred_masks = c5_pred_masks.argmax(axis=3)
 
     fuse5_pred_masks = pred_masks.copy()
+    fuse5_pred_masks[fuse5_pred_masks==5] = 1
     fuse5_pred_masks[c5_pred_masks==1] = 5
 
     fuse5_dsc, fuse5_h95, fuse5_vs = get_eval_metrics(test_masks, fuse5_pred_masks)

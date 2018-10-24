@@ -156,7 +156,7 @@ def get_2d_patches(input_fold, test_img='', drop_class = [], crop_shape=None,
 @click.option('--normilize_per_case', default=True, type=click.BOOL )
 @click.option('--output_fold', default='', type=click.STRING, help='Path to the output folder where numpy arrays will be stored')
 def main(input_fold, test_img, normilize_per_case, flair, t1, ir, output_fold):
-    get_2d_patches(input_fold=input_fold, normilize_per_case=normilize_per_case, drop_class=[9, 10],
+    get_2d_patches(input_fold=input_fold, normilize_per_case=normilize_per_case, drop_class=[],
                    crop_shape=None, flair=flair, t1=t1, ir=ir, test_img=test_img, output_fold=output_fold)
 
 
